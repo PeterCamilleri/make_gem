@@ -19,22 +19,27 @@ if gem_name !~ /\A[a-z][a-z0-9_]*\z/
   exit
 end
 
+debug = (ARGV[1] == "-d")
+
 class_name = gem_name.split("_").map(&:capitalize).join
 user_name  = (%x{git config --global user.name}).chomp
 user_email = (%x{git config --global user.email}).chomp
 here       = Dir.pwd + "/"
 there      = here + gem_name + "/"
-
+make_gem   = File.expand_path(File.dirname(__FILE__)) + "/"
+template   = make_gem + "template/"
 
 evaluator = binding
 
-puts "Creating gem = #{gem_name}",
-     "Module name  = #{class_name}",
-     "User name    = #{user_name}",
-     "User email   = #{user_email}",
-     "Current      = #{here}",
-     "Target       = #{there}",
-     ""
+puts "Creating gem    = #{gem_name}"
+puts "Module name     = #{class_name}" if debug
+puts "User name       = #{user_name}"
+puts "User email      = #{user_email}"
+puts "Current folder  = #{here}" if debug
+puts "Target folder   = #{there}"
+puts "Gem folder      = #{make_gem}" if debug
+puts "Template folder = #{template}" if debug
+puts
 
 # Verify that we may proceed.
 print "Proceed? (y/n): "
