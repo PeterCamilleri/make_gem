@@ -64,4 +64,10 @@ puts "3. Fix up the test files."
 # Bundler::VERSION.partition(/\d\.\d+/)
 # "fooo.md.erb".sub(/\.erb/, "")
 
+# git remote add origin https://github.com/PeterCamilleri/make_gem.git
+# git push -u origin master
+
 puts "** Done. **"
+
+
+
