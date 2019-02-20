@@ -19,7 +19,7 @@ if gem_name !~ /\A[a-z][a-z0-9_]*\z/
   exit
 end
 
-debug = (ARGV[1] == "-d")
+$debug = (ARGV[1] == "-d")
 
 class_name = gem_name.split("_").map(&:capitalize).join
 user_name  = (%x{git config --global user.name}).chomp
@@ -32,13 +32,13 @@ template   = make_gem + "template/"
 evaluator = binding
 
 puts "Creating gem    = #{gem_name}"
-puts "Module name     = #{class_name}" if debug
+puts "Module name     = #{class_name}" if $debug
 puts "User name       = #{user_name}"
 puts "User email      = #{user_email}"
-puts "Current folder  = #{here}" if debug
+puts "Current folder  = #{here}" if $debug
 puts "Target folder   = #{there}"
-puts "Gem folder      = #{make_gem}" if debug
-puts "Template folder = #{template}" if debug
+puts "Gem folder      = #{make_gem}" if $debug
+puts "Template folder = #{template}" if $debug
 puts
 
 # Verify that we may proceed.
@@ -65,6 +65,20 @@ puts "2. Fix up the rake file."
 puts "3. Fix up the test files."
 %x{git rm test/test_helper.rb}
 %x{git commit -m "Fix phase 3"}
+
+puts "4. Fix up the code files."
+MakeGem.process(template + "version.erb",
+                there + "lib/" + gem_name + "/version.rb",
+                evaluator)
+
+MakeGem.process(template + "gem_main.erb",
+                there + "lib/" + gem_name + ".rb",
+                evaluator)
+
+%x{git add .}
+%x{git commit -m "Fix phase 4"}
+
+
 
 # Bundler::VERSION.partition(/\d\.\d+/)
 # "fooo.md.erb".sub(/\.erb/, "")
