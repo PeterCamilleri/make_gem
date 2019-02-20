@@ -1,6 +1,8 @@
 # Build a gem framework without having to hack a ton of stuff.
 
+require 'erb'
 require_relative 'make_gem/version'
+require_relative 'make_gem/process'
 
 puts "make gem utility version: #{::MakeGem::VERSION}"
 
