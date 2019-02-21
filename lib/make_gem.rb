@@ -36,8 +36,8 @@ module MakeGem
 
     puts "Creating gem    = #{gem_name}"
     puts "Module name     = #{class_name}" if $debug
-    puts "User name       = #{user_name}"
-    puts "User email      = #{user_email}"
+    puts "User name       = #{user_name.inspect}"
+    puts "User email      = #{user_email.inspect}"
     puts "Current folder  = #{here}" if $debug
     puts "Target folder   = #{there}"
     puts "Gem folder      = #{make_gem}" if $debug
@@ -65,11 +65,7 @@ module MakeGem
     %x{git mv Rakefile rakefile.rb\n}
     %x{git commit -m "Fix phase 2"}
 
-    puts "3. Fix up the test files."
-    %x{git rm test/test_helper.rb}
-    %x{git commit -m "Fix phase 3"}
-
-    puts "4. Fix up the code files."
+    puts "3. Fix up the code files."
     MakeGem.process(template + "version.erb",
                     there + "lib/" + gem_name + "/version.rb",
                     evaluator)
@@ -79,6 +75,10 @@ module MakeGem
                     evaluator)
 
     %x{git add .}
+    %x{git commit -m "Fix phase 3"}
+
+    puts "4. Fix up the test files."
+    %x{git rm test/test_helper.rb}
     %x{git commit -m "Fix phase 4"}
 
 
