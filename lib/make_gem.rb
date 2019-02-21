@@ -12,14 +12,14 @@ module MakeGem
 
     # Check parameter and extract data.
     if args.empty?
-      puts "Usage: make_gem your_gem_name", ""
+      puts "Usage: make_gem your_gem_name {-d}", ""
       exit
     end
 
     gem_name = args[0]
 
     if gem_name !~ /\A[a-z][a-z0-9_]*\z/
-      puts "Invalid gem name: #{gem_name.inspect}", ""
+      puts "ERROR: Invalid gem name: #{gem_name.inspect}", ""
       exit
     end
 
@@ -33,6 +33,11 @@ module MakeGem
     make_gem   = File.expand_path(File.dirname(__FILE__)) + "/"
     template   = make_gem + "template/"
     bundler    = Bundler::VERSION.partition(/\d\.\d+/)[1]
+
+    if File.exists?(there)
+      puts "ERROR: The folder #{there} already exists."
+      exit
+    end
 
     evaluator = binding
 
@@ -64,7 +69,7 @@ module MakeGem
     %x{git rm bin/setup}
     %x{git commit -m "Fix phase 1"}
 
-    puts "2. Fix up the rake file."
+    puts "2. Rename the rake file."
     %x{git mv Rakefile rakefile.rb\n}
     %x{git commit -m "Fix phase 2"}
 
