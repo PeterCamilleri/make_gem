@@ -90,7 +90,14 @@ module MakeGem
     %x{git add .}
     %x{git commit -m "Fix phase 4"}
 
+    puts "5. Fix up the readme file."
 
+    MakeGem.process(template + "README.erb",
+                    there + "README.md",
+                    evaluator)
+
+    %x{git add .}
+    %x{git commit -m "Fix phase 5"}
 
     #
     # "fooo.md.erb".sub(/\.erb/, "")
