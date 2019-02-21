@@ -9,8 +9,8 @@ end
 
 task :default => :test
 
-desc "What version of make_gem is this?"
+desc "What version of <%= gem_name %> is this?"
 task :vers do |t|
   puts
-  puts "make_gem version = #{::MakeGem::VERSION}"
+  puts "<%= gem_name %> version = #{::<%= class_name %>::VERSION}"
 end
