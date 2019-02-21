@@ -117,11 +117,11 @@ module MakeGem
     %x{git add .}
     %x{git commit -m "Fix phase 6"}
 
-    #
-    # "fooo.md.erb".sub(/\.erb/, "")
-
-    # git remote add origin https://github.com/PeterCamilleri/make_gem.git
-    # git push -u origin master
+    puts
+    puts "To connect to github, use:"
+    puts "git remote add origin https://github.com/#{user_name}/#{gem_name}.git"
+    puts "git push -u origin master"
+    puts
 
     puts "** Done. **"
   end
