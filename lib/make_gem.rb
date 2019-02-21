@@ -1,6 +1,7 @@
 # Build a gem framework without having to hack a ton of stuff.
 
 require 'erb'
+require 'bundler'
 require_relative 'make_gem/version'
 require_relative 'make_gem/process'
 
@@ -31,6 +32,7 @@ module MakeGem
     there      = here + gem_name + "/"
     make_gem   = File.expand_path(File.dirname(__FILE__)) + "/"
     template   = make_gem + "template/"
+    bundler    = Bundler::VERSION.partition(/\d\.\d+/)[1]
 
     evaluator = binding
 
@@ -42,6 +44,7 @@ module MakeGem
     puts "Target folder   = #{there}"
     puts "Gem folder      = #{make_gem}" if $debug
     puts "Template folder = #{template}" if $debug
+    puts "Bundler version = #{bundler}" if $debug
     puts
 
     # Verify that we may proceed.
@@ -89,7 +92,7 @@ module MakeGem
 
 
 
-    # Bundler::VERSION.partition(/\d\.\d+/)
+    #
     # "fooo.md.erb".sub(/\.erb/, "")
 
     # git remote add origin https://github.com/PeterCamilleri/make_gem.git
