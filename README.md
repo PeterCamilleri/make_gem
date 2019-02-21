@@ -1,6 +1,6 @@
 # MakeGem
 
-Rails is opinionated. Bundler, it seems, is opinionated too. News flash, so am
+Rails is opinionated. Bundler, it seems, is opinionated too. News flash! So am
 I. I finally got tired of spending an hour whipping gem scaffolding into shape
 and decided to create my own hack to the bundle gem command.
 
@@ -8,17 +8,7 @@ Here it is!
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'make_gem'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
+Just install it yourself as:
 
     $ gem install make_gem
 
