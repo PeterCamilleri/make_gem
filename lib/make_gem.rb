@@ -120,7 +120,7 @@ module MakeGem
                     evaluator)
 
     %x{git add .}
-    %x{git commit -m "Fix phase 6"}
+    %x{git commit -m "Fix phase 7"}
 
     puts
     puts "To connect to github, use:"
