@@ -1,6 +1,10 @@
 # MakeGem
 
-WIP
+Rails is opinionated. Bundler, it seems, is opinionated too. News flash, so am
+I. I finally got tired of spending an hour whipping gem scaffolding into shape
+and decided to create my own hack to the bundle gem command.
+
+Here it is!
 
 ## Installation
 
@@ -20,7 +24,17 @@ Or install it yourself as:
 
 ## Usage
 
-WIP
+make_gem <gem_name> {-d}
+
+Where
+* <gem_name> is the name of the gem to be created.
+* -d is an optional debug option that makes the program rather more verbose.
+
+The command to be executed in the parent of the folder you want the gem to be
+created in.
+
+For safety, you will be shown the key parameters of the gem creation and given
+a go/no go (y/n) choice.
 
 ## Contributing
 1. Fork it

@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+#
+# The make gem utility
+#
+
+require_relative '../lib/make_gem'
+
+MakeGem.make_gem(ARGV)
