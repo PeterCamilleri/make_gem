@@ -79,6 +79,12 @@ module MakeGem
 
     puts "4. Fix up the test files."
     %x{git rm test/test_helper.rb}
+
+    MakeGem.process(template + "gem_test.erb",
+                    there + "test/" + gem_name + "_test.rb",
+                    evaluator)
+
+    %x{git add .}
     %x{git commit -m "Fix phase 4"}
 
 
