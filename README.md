@@ -32,7 +32,7 @@ the key parameters of the gem creation and given a go/no go (y/n) choice.
 The make_gem starts out with the standard gem skeleton created by bundler and
 makes the following changes:
 
-1. Removes .travis.yml, bin/console, and bin/setup. I don't use these.
+1. Removes .travis.yml, bin/console, and bin/setup. I don't/cannot use these.
 2. Renames the rakefile from Rakefile to rakefile.rb. I prefer Ruby code to have
 a dot rb file suffix whenever possible.
 3. Replace the gem's main file. I prefer the use of require_relative for files
