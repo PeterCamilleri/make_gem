@@ -11,8 +11,12 @@ module MakeGem
     puts "make gem utility version: #{::MakeGem::VERSION}"
 
     # Check parameter and extract data.
-    if args.empty?
-      puts "Usage: make_gem your_gem_name {-d}", ""
+    if args.empty? || args[0] == "--help"
+      puts "Usage:",
+           "    make_gem your_gem_name {-d}",
+           "        -d adds debug info.",
+           "    make_gem --help",
+           ""
       exit
     end
 
