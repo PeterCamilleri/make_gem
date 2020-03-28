@@ -1,6 +1,5 @@
 require_relative '../lib/make_gem'
 require          'minitest/autorun'
-require          'minitest_visible'
 
 class MakeGemTest < Minitest::Test
   def test_that_it_has_a_version_number
